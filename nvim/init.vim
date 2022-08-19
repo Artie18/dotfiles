@@ -26,7 +26,7 @@ set expandtab
 "let loaded_matchparen = 1
 set shell=fish
 set backupskip=/tmp/*,/private/tmp/*
-
+let mapleader = ";"
 " incremental substitution (neovim)
 if has('nvim')
   set inccommand=split
@@ -56,12 +56,20 @@ set backspace=start,eol,indent
 " Finding files - Search down into subfolders
 set path+=**
 set wildignore+=*/node_modules/*
-
+set mouse=a
 " Turn off paste mode when leaving insert
 autocmd InsertLeave * set nopaste
 
 " Add asterisks in block comments
 set formatoptions+=r
+ " Show hover
+nnoremap K <Cmd>lua vim.lsp.buf.hover()<CR>
+ " Jump to definition
+nnoremap gd <Cmd>lua vim.lsp.buf.definition()<CR>
+ " Open code actions using the default lsp UI, if you want to change this please see the plugins above
+nnoremap <leader>ca <Cmd>lua vim.lsp.buf.code_action()<CR>
+ " Open code actions for the selected visual range
+xnoremap <leader>ca <Cmd>lua vim.lsp.buf.range_code_action()<CR>
 
 "}}}
 
@@ -134,4 +142,5 @@ set exrc
 "
 
 
+autocmd FileType go setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
