@@ -1,5 +1,4 @@
 if has("nvim")
-
   let g:plug_home = stdpath('data') . '/plugged'
 endif
 
@@ -11,7 +10,9 @@ Plug 'cohama/lexima.vim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'ThePrimeagen/git-worktree.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+
 Plug 'folke/which-key.nvim'
 Plug 'scrooloose/nerdtree'
 Plug 'Pocco81/AutoSave.nvim'
@@ -21,7 +22,8 @@ Plug 'dart-lang/dart-vim-plugin'
 Plug 'akinsho/flutter-tools.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
-
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
 
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -34,6 +36,10 @@ call plug#end()
 set completeopt=menu,menuone,noselect
 
 lua << EOF
+  package.path = package.path .. ";./lua/_telescope.lua";
+  require '_telescope';
+   
+  
   local cmp = require'cmp'
 
   cmp.setup({

@@ -7,7 +7,7 @@ autocmd!
 scriptencoding utf-8
 " stop loading config if it's on tiny or small
 if !1 | finish | endif
-
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 set nocompatible
 set number
 syntax enable
@@ -59,7 +59,7 @@ set wildignore+=*/node_modules/*
 set mouse=a
 " Turn off paste mode when leaving insert
 autocmd InsertLeave * set nopaste
-
+autocmd BufWritePre * :%s/\s\+$//e
 " Add asterisks in block comments
 set formatoptions+=r
  " Show hover
