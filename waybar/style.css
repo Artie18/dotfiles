@@ -1,0 +1,87 @@
+* {
+    font-family: "Hack";
+    font-size: 13px;
+    min-height: 0;
+  }
+  
+  window#waybar {
+    /* background: transparent; */
+    /* background: black; */
+    background: rgba(56, 66, 82, 0.9);
+    color: rgb(184, 184, 184);
+    border-radius: 10px;
+  }
+  
+  #window {
+    font-family: "Hack";
+  }
+  
+  #workspaces button.focused {
+    color: #042f66;
+    border: 2px solid #042f66;
+    border-radius: 5px;
+  }
+
+  #workspaces button {
+    color: gray;
+  }
+  
+  #tray,
+  #custom-japan,
+  #custom-germany,
+  #temperature,
+  #clock,
+  #battery,
+  #cpu,
+  #memory,
+  #network,
+  #pulseaudio {
+    padding: 0 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  #temperature.critical {
+    color: #b62d66;
+  }
+  
+  #battery icon {
+    color: #b62d66;
+  }
+  
+  #battery.charging {
+    color: #042f66;
+    border: 2px dotted #042f66;
+  }
+  
+  @keyframes blink {
+    to {
+      background-color: #8fd4ff;
+      color: black;
+    }
+  }
+  
+  #battery.warning:not(.charging) {
+    color: white;
+    animation-name: blink;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    border-radius: 5px;
+  }
+  
+  #battery.warning:not(.charging) {
+    color: white;
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    border-radius: 5px;
+  }
+  
+  #network.disconnected {
+    color: #b62d66;
+  }
