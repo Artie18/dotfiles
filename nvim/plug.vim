@@ -15,7 +15,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 Plug 'folke/which-key.nvim'
 Plug 'scrooloose/nerdtree'
-Plug 'Pocco81/AutoSave.nvim'
+Plug 'pocco81/auto-save.nvim'
 Plug 'cormacrelf/dark-notify'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'dart-lang/dart-vim-plugin'
@@ -24,12 +24,19 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'rebelot/kanagawa.nvim'
 
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'sbdchd/neoformat'
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'mhartington/formatter.nvim'
+Plug 'huyvohcmc/atlas.vim'
 
 call plug#end()
 
@@ -97,4 +104,83 @@ lua << EOF
   }
   require'lspconfig'.dartls.setup{}
   require'lspconfig'.rust_analyzer.setup{}
+  require'lspconfig'.tsserver.setup {}
+  require'lspconfig'.pyright.setup{}
+
+  -- Utilities for creating configurations
+  local util = require "formatter.util"
+  
+  -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
+  require("formatter").setup {
+    -- Enable or disable logging
+    logging = true,
+    -- Set the log level
+    log_level = vim.log.levels.WARN,
+    -- All formatter configurations are opt-in
+    filetype = {
+      -- Formatter configurations for filetype "lua" go here
+      -- and will be executed in order
+      lua = {
+        -- "formatter.filetypes.lua" defines default configurations for the
+        -- "lua" filetype
+        require("formatter.filetypes.lua").stylua,
+  
+        -- You can also define your own configuration
+        function()
+          -- Supports conditional formatting
+          if util.get_current_buffer_file_name() == "special.lua" then
+            return nil
+          end
+  
+          -- Full specification of configurations is down below and in Vim help
+          -- files
+          return {
+            exe = "stylua",
+            args = {
+              "--search-parent-directories",
+              "--stdin-filepath",
+              util.escape_path(util.get_current_buffer_file_path()),
+              "--",
+              "-",
+            },
+            stdin = true,
+          }
+        end
+      },
+  
+      -- Use the special "*" filetype for defining formatter configurations on
+      -- any filetype
+      ["*"] = {
+        -- "formatter.filetypes.any" defines default configurations for any
+        -- filetype
+        require("formatter.filetypes.any").remove_trailing_whitespace
+      }
+    }
+  }
+
+  require('kanagawa').setup({
+    compile = false,             -- enable compiling the colorscheme
+    undercurl = true,            -- enable undercurls
+    commentStyle = { italic = true },
+    functionStyle = {},
+    keywordStyle = { italic = true},
+    statementStyle = { bold = true },
+    typeStyle = {},
+    transparent = false,         -- do not set background color
+    dimInactive = false,         -- dim inactive window `:h hl-NormalNC`
+    terminalColors = true,       -- define vim.g.terminal_color_{0,17}
+    colors = {                   -- add/modify theme and palette colors
+        palette = {},
+        theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+    },
+    overrides = function(colors) -- add/modify highlights
+        return {}
+    end,
+    theme = "wave",              -- Load "wave" theme when 'background' option is not set
+    background = {               -- map the value of 'background' option to a theme
+        dark = "wave",           -- try "dragon" !
+        light = "lotus"
+    },
+  })
+
 EOF

@@ -24,7 +24,7 @@ set laststatus=2
 set scrolloff=10
 set expandtab
 "let loaded_matchparen = 1
-set shell=fish
+set shell=zsh
 set backupskip=/tmp/*,/private/tmp/*
 let mapleader = ";"
 " incremental substitution (neovim)
@@ -70,6 +70,7 @@ nnoremap gd <Cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <leader>ca <Cmd>lua vim.lsp.buf.code_action()<CR>
  " Open code actions for the selected visual range
 xnoremap <leader>ca <Cmd>lua vim.lsp.buf.range_code_action()<CR>
+nnoremap <leader>sv <Cmd>vertical split<CR>
 
 "}}}
 
@@ -86,6 +87,7 @@ au BufNewFile,BufRead *.mdx set filetype=markdown
 au BufNewFile,BufRead *.flow set filetype=javascript
 " Fish
 au BufNewFile,BufRead *.fish set filetype=fish
+au BufNewFile,BufRead *.rb set filetype=ruby
 
 set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
 
@@ -125,8 +127,8 @@ if exists("&termguicolors") && exists("&winblend")
   " set background=dark
   " Use NeoSolarized
   let g:neosolarized_termtrans=1
-  runtime ./colors/everforest.vim
-  colorscheme everforest
+  " runtime ./colors/everforest.vim
+  colorscheme kanagawa-wave
 endif
 
 "}}}
