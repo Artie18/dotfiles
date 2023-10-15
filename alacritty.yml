@@ -16,10 +16,10 @@ window:
 
   padding:
     x: 7
-    y: 7
+    y: 7 
 
   dynamic_padding: false
-  decorations: none
+  #decorations: none
 
 scrolling:
   history: 50000
@@ -36,9 +36,9 @@ font:
 
   italic:
     family: Hack
-    style: Bold Italic
+    style: Italic
 
-  size: 11.0
+  size: 12.0
 
   offset:
     x: 0
@@ -48,15 +48,16 @@ font:
     x: 0
     y: 0
 
+#  use_thin_strokes: true
+
 
 draw_bold_text_with_bright_colors: true
-
+live_config_reload: true
 colors:
   # Default colors
   primary:
-    background: '#384252'
-    foreground: '#B8B8B8'
-
+    background: '#1c1b19'
+    foreground: '#fce8c3'
 
   # Cursor colors
   cursor:
@@ -84,7 +85,6 @@ colors:
     magenta: '#ff5c8f'
     cyan:    '#2be4d0'
     white:   '#fce8c3'
-
 
 key_bindings:
     - { key: J,        mods: Alt,           chars: "\x1bj"                       }
