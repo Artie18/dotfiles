@@ -7,7 +7,7 @@ autocmd!
 scriptencoding utf-8
 " stop loading config if it's on tiny or small
 if !1 | finish | endif
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+
 set nocompatible
 set number
 syntax enable
@@ -59,7 +59,7 @@ set wildignore+=*/node_modules/*
 set mouse=a
 " Turn off paste mode when leaving insert
 autocmd InsertLeave * set nopaste
-autocmd BufWritePre * :%s/\s\+$//e
+
 " Add asterisks in block comments
 set formatoptions+=r
  " Show hover
@@ -107,9 +107,6 @@ if has("unix")
     runtime ./macos.vim
   endif
 endif
-if has('win32')
-  runtime ./windows.vim
-endif
 
 runtime ./maps.vim
 "}}}
@@ -146,3 +143,32 @@ set exrc
 
 autocmd FileType go setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
+lua << EOF 
+  -- disable netrw at the very start of your init.lua
+  vim.g.loaded_netrw = 1
+  vim.g.loaded_netrwPlugin = 1
+
+  -- set termguicolors to enable highlight groups
+  vim.opt.termguicolors = true
+  require('artyomk') 
+  
+
+  -- OR setup with some options
+  -- require("nvim-tree").setup({
+  --   sort_by = "case_sensitive",
+  --   view = {
+  --     width = 30,
+  --   },
+  --   renderer = {
+  --     group_empty = true,
+  --   },
+  --   filters = {
+  --     dotfiles = true,
+  --   },
+  --   update_focused_file = {
+  --     enable = true,
+  --     update_root = true,
+  --   }
+  -- })
+
+EOF 
