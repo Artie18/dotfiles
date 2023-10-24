@@ -20,7 +20,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'rebelot/kanagawa.nvim'
-
+Plug 'vrischmann/tree-sitter-templ'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -32,6 +32,7 @@ Plug 'huyvohcmc/atlas.vim'
 
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'ThePrimeagen/harpoon'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 call plug#end()
 

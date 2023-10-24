@@ -36,7 +36,6 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 
 local lspconfig = require('lspconfig')
 
-
 lspconfig.gopls.setup{}
 lspconfig.solargraph.setup{
   settings = {
@@ -51,3 +50,41 @@ lspconfig.dartls.setup{}
 lspconfig.rust_analyzer.setup{}
 lspconfig.tsserver.setup {}
 lspconfig.pyright.setup{}
+lspconfig.templ.setup {
+    on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
+    },
+}
+
+lspconfig.tailwindcss.setup({
+  filetypes = {
+    'templ',
+    'html'
+  },
+  init_options = {
+    userLanguages = {
+        templ = "html"
+    }
+  }
+})
+
+vim.filetype.add({
+ extension = {
+  templ = "templ",
+ },
+})
+
+vim.api.nvim_create_autocmd(
+  {
+    -- 'BufWritePre' event triggers just before a buffer is written to file.
+    "BufWritePre"
+  },
+  {
+    pattern = {"*.templ"},
+    callback = function()
+      -- Format the current buffer using Neovim's built-in LSP (Language Server Protocol).
+      vim.lsp.buf.format()
+    end,
+  }
+)
