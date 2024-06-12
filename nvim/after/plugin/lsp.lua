@@ -1,3 +1,7 @@
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local lspconfig = require('lspconfig')
+local lspconfigs = require('lspconfig.configs')
+local lsputil = require('lspconfig.util')
 
 local cmp = require'cmp'
 
@@ -32,20 +36,17 @@ cmp.setup({
     { name = 'buffer' },
   })
 })
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-local lspconfig = require('lspconfig')
 
 lspconfig.gopls.setup{}
-lspconfig.solargraph.setup{
-  settings = {
-    solargraph = {
-      commandPath = '/Users/artyomfedenka/.rvm/gems/ruby-3.1.0/bin/solargraph',
-      diagnostics = true,
-      completion = true
-    }
-  }
-}
+-- lspconfig.solargraph.setup{
+--   settings = {
+--     solargraph = {
+--       commandPath = '/.rbenv/shims/solargraph',
+--       diagnostics = true,
+--       completion = true
+--     }
+--   }
+-- }
 lspconfig.dartls.setup{}
 lspconfig.rust_analyzer.setup{}
 lspconfig.tsserver.setup {}
@@ -57,17 +58,18 @@ lspconfig.templ.setup {
     },
 }
 
-lspconfig.tailwindcss.setup({
-  filetypes = {
-    'templ',
-    'html'
-  },
-  init_options = {
-    userLanguages = {
-        templ = "html"
-    }
-  }
-})
+-- lspconfig.tailwindcss.setup({
+--   filetypes = {
+--     'templ',
+--     'html',
+--     'erb'
+--   },
+--   init_options = {
+--     userLanguages = {
+--         templ = "html"
+--     }
+--   }
+-- })
 
 vim.filetype.add({
  extension = {
@@ -88,3 +90,5 @@ vim.api.nvim_create_autocmd(
     end,
   }
 )
+
+-- require'lspconfig'.ruby_ls.setup{}

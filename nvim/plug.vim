@@ -2,6 +2,7 @@ let g:plug_home = stdpath('data') . '/plugged'
 
 call plug#begin()
 
+Plug 'craftzdog/solarized-osaka.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'cohama/lexima.vim'
@@ -28,10 +29,16 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'sbdchd/neoformat'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'huyvohcmc/atlas.vim'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'nvim-tree/nvim-tree.lua'
+Plug 'preservim/vim-pencil'
+Plug 'junegunn/goyo.vim' 
+Plug 'junegunn/limelight.vim'
 
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'ThePrimeagen/harpoon'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 
 call plug#end()
 
