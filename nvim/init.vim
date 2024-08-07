@@ -76,24 +76,17 @@ nnoremap <leader>sv <Cmd>vertical split<CR>
 
 " File types "{{{
 " ---------------------------------------------------------------------
-" JavaScript
-au BufNewFile,BufRead *.es6 setf javascript
-" TypeScript
-au BufNewFile,BufRead *.tsx setf typescriptreact
-" Markdown
-au BufNewFile,BufRead *.md set filetype=markdown
-au BufNewFile,BufRead *.mdx set filetype=markdown
-" Flow
-au BufNewFile,BufRead *.flow set filetype=javascript
-" Fish
-au BufNewFile,BufRead *.fish set filetype=fish
-au BufNewFile,BufRead *.rb set filetype=ruby
+au BufNewFile,BufRead *.es6  setf javascript
+au BufNewFile,BufRead *.tsx  setf typescriptreact
+au BufNewFile,BufRead *.md   set filetype=markdown
+au BufNewFile,BufRead *.mdx  set filetype=markdown
+au BufNewFile,BufRead *.rb   set filetype=ruby
 
 set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
 
 autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
-autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
-autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
+autocmd FileType ruby   setlocal shiftwidth=2 tabstop=2
+autocmd FileType yaml   setlocal shiftwidth=2 tabstop=2
 
 "}}}
 
@@ -152,24 +145,5 @@ lua << EOF
   -- set termguicolors to enable highlight groups
   vim.opt.termguicolors = true
   require('artyomk') 
-  
-
-  -- OR setup with some options
-  -- require("nvim-tree").setup({
-  --   sort_by = "case_sensitive",
-  --   view = {
-  --     width = 30,
-  --   },
-  --   renderer = {
-  --     group_empty = true,
-  --   },
-  --   filters = {
-  --     dotfiles = true,
-  --   },
-  --   update_focused_file = {
-  --     enable = true,
-  --     update_root = true,
-  --   }
-  -- })
 
 EOF 

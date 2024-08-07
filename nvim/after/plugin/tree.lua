@@ -4,9 +4,8 @@ vim.g.loaded_netrwPlugin = 1
 
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
-
--- empty setup using defaults
-require("nvim-tree").setup()
+local api = require "nvim-tree.api"
+vim.keymap.set("n", ";k", api.tree.toggle, { noremap = true })
 
 -- OR setup with some options
 require("nvim-tree").setup({
@@ -21,5 +20,8 @@ require("nvim-tree").setup({
   },
   filters = {
     dotfiles = true,
+  },
+  update_focused_file = {
+	  enable = true,
   },
 })
