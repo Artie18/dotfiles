@@ -52,6 +52,15 @@ lspconfig.templ.setup {
       debounce_text_changes = 150,
     },
 }
+lspconfig.sourcekit.setup{
+  capabilities = {
+    workspace = {
+      didChangeWatchedFiles = {
+        dynamicRegistration = true,
+      },
+    },
+  },
+}
 
 -- lspconfig.tailwindcss.setup({
 --   filetypes = {

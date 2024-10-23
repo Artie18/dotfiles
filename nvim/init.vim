@@ -137,13 +137,12 @@ set exrc
 
 autocmd FileType go setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
-lua << EOF 
+lua << EOF
   -- disable netrw at the very start of your init.lua
   vim.g.loaded_netrw = 1
   vim.g.loaded_netrwPlugin = 1
-
   -- set termguicolors to enable highlight groups
   vim.opt.termguicolors = true
   require('artyomk') 
+EOF
 
-EOF 
