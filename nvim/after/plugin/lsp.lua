@@ -23,7 +23,7 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'vsnip' }, -- For vsnip users.
+    { name = 'vsnip' }, -- For vsni' users.
     -- { name = 'luasnip' }, -- For luasnip users.
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
@@ -44,7 +44,7 @@ lspconfig.gopls.setup{}
 -- }
 lspconfig.dartls.setup{}
 lspconfig.rust_analyzer.setup{}
-lspconfig.tsserver.setup {}
+lspconfig.ts_ls.setup{}
 lspconfig.pyright.setup{}
 lspconfig.templ.setup {
     on_attach = on_attach,
@@ -60,6 +60,12 @@ lspconfig.sourcekit.setup{
       },
     },
   },
+}
+
+lspconfig.sorbet.setup{
+    cmd = { "bundle", "exec", "srb", "typecheck", "--lsp", "--disable-watchman" },
+    filetypes = { "ruby" },
+    root_dir = require('lspconfig').util.root_pattern("Gemfile", ".git")
 }
 
 -- lspconfig.tailwindcss.setup({

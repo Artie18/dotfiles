@@ -4,6 +4,7 @@ call plug#begin()
 
 Plug 'craftzdog/solarized-osaka.nvim'
 Plug 'tpope/vim-fugitive'
+Plug 'github/copilot.vim'
 Plug 'tpope/vim-rhubarb'
 Plug 'cohama/lexima.vim'
 Plug 'nvim-lua/popup.nvim'

@@ -118,8 +118,8 @@ if exists("&termguicolors") && exists("&winblend")
   " Use NeoSolarized
   let g:neosolarized_termtrans=1
   " runtime ./colors/everforest.vim
-  " colorscheme kanagawa-wave
-  colorscheme solarized-osaka-night
+  colorscheme kanagawa
+  hi Normal guibg=NONE ctermbg=NONE
 endif
 
 "}}}
